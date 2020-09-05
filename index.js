@@ -1,17 +1,16 @@
-const axios = require('axios');
+const glpi = require('./glpi');
 
-const info = axios.get('https://cs.genialinvestimentos.com.br/apirest.php/Change/1700/', {
-    headers: {
-        "Content-Type": "application/json",
-        "App-Token": "7by95O8T4q8U71CmDHRkpjbRd1nGuXwrUqMBhHho",
-        "Session-Token": "nrdkebp8qmo051d225hk9tocf3"
-    }
-}).then((response)=>{
-    if (response.status == 200){
-        console.log(response.data);
+class Change {
+    constructor(id) {
+      this.id = id;
     }    
-})
-.catch(function (error) {
-    // handle error
-    console.log(error);
-});
+}
+
+async function Start(){
+    let change = new Change(1750);
+    change.data = await glpi.getChange(change.id);
+    //console.log(data.name);
+    console.log(JSON.stringify(change));
+}
+
+Start();
