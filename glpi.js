@@ -1,11 +1,13 @@
-const config = require('./credentials/glpi.json');
 const axioRequest = require('./axioRequest');
 
 var glpi = {    
     getChange: async (id)=> {
-        var data = await axioRequest.vai(`/Change/${id}/`, config);
+        var data = await axioRequest.get(`/Change/${id}/`);
         return data;
-    }        
+    },
+    getChangeValidations: async(id)=>{
+        var validations = await axioRequest.get(`Change/${id}/changevalidation`);
+    }
 };
 
 module.exports = glpi

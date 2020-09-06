@@ -1,7 +1,8 @@
+const config = require('./credentials/glpi.json');
 const axios = require('axios');
 
 var axioRequest = {
-    vai: async function (segment, config) {
+    get: async function (segment) {
         
         var aki = await axios.get(`${config.address}${segment}`, 
         {
