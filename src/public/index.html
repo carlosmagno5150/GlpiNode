@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>titulo</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" charset="utf-8"></script>    
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <div>
+            <label for="changeId">Change #</label>
+            <input type="number" id="changeId">
+            <button onclick=vai() type="button">OK</button>
+        </div>
+        <div id="dvMain">
+            teste
+        </div>                
+        <script>
+            function vai(){
+                var change = document.getElementById("changeId").value;
+                console.log('waiting');
+                axios.get('/change/'+change)
+                .then(function(res) {
+
+                    document.getElementById('dvMain').innerHTML = 
+                    JSON.stringify( res.data);
+
+                });
+            }
+        </script>
+    </body>        
+</html>
